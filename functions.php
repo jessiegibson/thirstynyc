@@ -44,7 +44,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 // ARRANGING THE IMAGES  //
 add_image_size('feature', 1024, 576, TRUE);
-
+add_image_size('inside-blog', 640, 640, TRUE);
 
 // Add Read More Link to Excerpts
     add_filter('excerpt_more', 'get_read_more_link');
