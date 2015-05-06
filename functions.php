@@ -99,14 +99,14 @@ add_filter( 'genesis_post_meta', 'dmp_post_meta_filter' );
 *	Adding the Facebook Page Like to Thirsty
 */
 function thirsty_facebook_like() {
-	echo 	'<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-  			var js, fjs = d.getElementsByTagName(s)[0];
-  			if (d.getElementById(id)) return;
-  			js = d.createElement(s); js.id = id;
-  			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=264969056868947";
-  			fjs.parentNode.insertBefore(js, fjs);'
-	echo 	"}(document, 'script', 'facebook-jssdk'));</script>"
+	echo 	"<div id='fb-root'></div>
+				<script>(function(d, s, id) {
+  					var js, fjs = d.getElementsByTagName(s)[0];
+  					if (d.getElementById(id)) return;
+  					js = d.createElement(s); js.id = id;
+  					js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=250119945179409';
+  					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>"
 }
 
 add_action('genesis_before','thirsty_facebook_like');
