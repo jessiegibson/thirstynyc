@@ -59,7 +59,6 @@ add_filter( 'wp_nav_menu_items', 'theme_menu_extras', 10, 2 );
 
 /**
  * Filter menu items, appending either a search form or today's date.
-
  */
 function theme_menu_extras( $menu, $args ) {
 
@@ -87,7 +86,6 @@ function single_post_featured_image() {
 
 }
 
-
 add_filter( 'genesis_post_meta', 'dmp_post_meta_filter' );
 	function dmp_post_meta_filter($post_meta) {
 		if (!is_page()) {
@@ -95,3 +93,43 @@ add_filter( 'genesis_post_meta', 'dmp_post_meta_filter' );
 			return $post_meta;
 		}
 }
+
+/* 
+*
+*	Adding the Facebook Page Like to Thirsty
+*/
+function thirsty_facebook_like() {
+	echo 	'<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+  			var js, fjs = d.getElementsByTagName(s)[0];
+  			if (d.getElementById(id)) return;
+  			js = d.createElement(s); js.id = id;
+  			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=264969056868947";
+  			fjs.parentNode.insertBefore(js, fjs);'
+	echo 	"}(document, 'script', 'facebook-jssdk'));</script>"
+}
+
+add_action('genesis_before','thirsty_facebook_like');
+
+// Inserting the FB Page Like Box after the content of each page.
+function thirsty_fb_after_content(){
+	echo '<div class="fb-page" 
+			data-href="https://www.facebook.com/thirstynyc" 
+			data-width="100%" 
+			data-height="300" 
+			data-hide-cover="false" 
+			data-show-facepile="true" 
+			data-show-posts="false">
+				<div class="fb-xfbml-parse-ignore">
+					<blockquote cite="https://www.facebook.com/thirstynyc">
+						<a href="https://www.facebook.com/thirstynyc">Thirsty NYC</a>
+					</blockquote>
+				</div>
+			</div>'
+}
+
+add_action('genesis_after_content','thirsty_fb_after_content');
+
+
+
+
