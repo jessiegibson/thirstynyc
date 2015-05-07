@@ -98,38 +98,44 @@ add_filter( 'genesis_post_meta', 'dmp_post_meta_filter' );
 *
 *	Adding the Facebook Page Like to Thirsty
 */
+add_action('genesis_before','thirsty_facebook_like');
+
 function thirsty_facebook_like() {
-	echo 	"<div id='fb-root'></div>
+	echo '<div id="fb-root"></div>
 				<script>(function(d, s, id) {
   					var js, fjs = d.getElementsByTagName(s)[0];
   					if (d.getElementById(id)) return;
   					js = d.createElement(s); js.id = id;
-  					js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=250119945179409';
+  					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=250119945179409";
   					fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));</script>"
+					}(document, \'script\', \'facebook-jssdk\'));
+                </script>';
 }
-
-add_action('genesis_before','thirsty_facebook_like');
 
 // Inserting the FB Page Like Box after the content of each page.
 function thirsty_fb_after_content(){
-	echo '<div class="fb-page" 
-			data-href="https://www.facebook.com/thirstynyc" 
-			data-width="100%" 
-			data-height="300" 
-			data-hide-cover="false" 
-			data-show-facepile="true" 
-			data-show-posts="false">
-				<div class="fb-xfbml-parse-ignore">
-					<blockquote cite="https://www.facebook.com/thirstynyc">
-						<a href="https://www.facebook.com/thirstynyc">Thirsty NYC</a>
-					</blockquote>
-				</div>
+	echo '<div class="fb-page"> 
+            <span class="fb-like-text"><span>Like Thirsty on </span><span class="blue-text">Facebook</span></span><li class="fb-like">
+            <div
+            class="fb-like"
+            width="48"
+            data-href="https://www.facebook.com/thirstynyc" 
+            data-layout="button_count"
+            data-width="450" 
+            data-action="like"
+            data-show-facepile="true" 
+            data-show-posts="false"
+            data-share="false">
+            <div class="fb-xfbml-parse-ignore">
+            </div>
+            </li>
+            </ul>';
+			/* <blockquote cite="https://www.facebook.com/thirstynyc">
+			<a href="https://www.facebook.com/thirstynyc">Thirsty NYC</a>
+			</blockquote>
+			</div>
 			</div>'
+            */
 }
 
-add_action('genesis_after_content','thirsty_fb_after_content');
-
-
-
-
+add_action('genesis_after_loop','thirsty_fb_after_content');
